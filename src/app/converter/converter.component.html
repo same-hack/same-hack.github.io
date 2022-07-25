@@ -1,0 +1,19 @@
+<main>
+  <section>
+    <p>任意の項目に値を入力して変換を押すと</p>
+    <p>他の進数に変換されるよ！</p>
+  </section>
+
+  <div class="">
+    2 進数：<input [(ngModel)]="binary" />
+    <button (click)="convertBinary(binary)">変換</button>
+  </div>
+  <div class="">
+    10進数：<input type="number" [(ngModel)]="decimal" />
+    <button (click)="convertDecimal(decimal)">変換</button>
+  </div>
+  <div class="">
+    16進数：<input [(ngModel)]="hexDecimal" />
+    <button (click)="convertHexDecimal(hexDecimal)">変換</button>
+  </div>
+</main>
