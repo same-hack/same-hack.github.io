@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { ConverterComponent } from './converter/converter.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, ConverterComponent, HeaderComponent],
+  declarations: [AppComponent, ConverterComponent, HeaderComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
