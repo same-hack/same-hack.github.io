@@ -7,9 +7,10 @@ import { ConverterComponent } from './converter/converter.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { ColorCodeConverterComponent } from './color-code-converter/color-code-converter.component';
 
 @NgModule({
-  declarations: [AppComponent, ConverterComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, ConverterComponent, HeaderComponent, HomeComponent, ColorCodeConverterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

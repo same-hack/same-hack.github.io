@@ -1,0 +1,42 @@
+<main>
+  <h1>🦈カラーコード変換ツール</h1>
+  <p>rgb表記のカラーコード←→16進数表記の変換を行うツールです。</p>
+  <br />
+  <br />
+
+  <div class="">
+    <h2>rgb表記　→　16進数表記</h2>
+    <section>
+      <p>- 使い方 -</p>
+      <p>rgb表記のカラーコードをカンマ区切りで入力してください</p>
+    </section>
+    <div class="">
+      rgb(<input class="" type="text" [(ngModel)]="inputRgbCode" />)
+      <button (click)="convertRgbToHex(inputRgbCode)">- 変換 →</button>
+      &nbsp;<input *ngIf="outputHexDecimal" [value]="outputHexDecimal" />
+    </div>
+  </div>
+  <br />
+  <hr />
+  <br />
+
+  <div class="">
+    <h2>16進数表記　→　rgb表記</h2>
+    <section>
+      <p>- 使い方 -</p>
+      <p>16進数表記のカラーコードを区切りなしで入力してください</p>
+    </section>
+    <div class="">
+      #<input type="text" [(ngModel)]="inputHexDecimal" /> &nbsp;<button
+        (click)="convertHexToRgbCode(inputHexDecimal)"
+      >
+        - 変換 →
+      </button>
+      &nbsp;<input
+        class="output-rgb"
+        *ngIf="outputRgbCode"
+        [value]="outputRgbCode"
+      />
+    </div>
+  </div>
+</main>

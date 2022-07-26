@@ -3,12 +3,6 @@
   margin: 0;
   font-family: Menlo, Consolas, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
     Meiryo, sans-serif;
-  color: antiquewhite;
-}
-
-input,
-button {
-  color: darkslategray;
 }
 
 body {
@@ -16,7 +10,7 @@ body {
   /*  widthの設定は状況によって100%でもOKです  */
   width: 100vw;
   /* 背景画像設定 */
-  background: url("./app/img/kv2.jpg") center/ cover;
+  // background: url("./app/img/kv2.jpg") center/ cover;
 }
 
 /* マットを敷く為の疑似要素 */
@@ -30,7 +24,22 @@ body::after {
   z-index: -100;
 
   /* 黒の透過50%のマット */
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.05);
   /* 疑似要素なのでcontentの記述は必須 */
   content: "";
+}
+
+h2 {
+  margin-bottom: 20px;
+  background-color: #e2f3f3;
+  border-bottom: 4px solid #86cfcf;
+  color: #333;
+  padding-left: 0.5em;
+}
+section {
+  margin-bottom: 20px;
+  padding-left: 0.5em;
+}
+section p {
+  padding-left: 0.5em;
 }
