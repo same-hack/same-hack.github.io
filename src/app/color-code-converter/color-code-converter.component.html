@@ -11,9 +11,15 @@
       <p>rgb表記のカラーコードをカンマ区切りで入力してください</p>
     </section>
     <div class="">
-      rgb(<input class="" type="text" [(ngModel)]="inputRgbCode" />)
-      <button (click)="convertRgbToHex(inputRgbCode)">- 変換 →</button>
+      rgb(<input class="" type="text" [(ngModel)]="inputRgb" />)
+      <button (click)="convertRgbToHex(inputRgb)">- 変換 →</button>
       &nbsp;<input *ngIf="outputHexDecimal" [value]="outputHexDecimal" />
+      <div *ngIf="outputHexDecimal">
+        <p [style]="outputHexDecimalColor">
+          こんな色だよ　
+          <span class="sample-color" [style]="outputHexDecimalBgColor"></span>
+        </p>
+      </div>
     </div>
   </div>
   <br />
@@ -28,15 +34,17 @@
     </section>
     <div class="">
       #<input type="text" [(ngModel)]="inputHexDecimal" /> &nbsp;<button
-        (click)="convertHexToRgbCode(inputHexDecimal)"
+        (click)="convertHexToRgb(inputHexDecimal)"
       >
         - 変換 →
       </button>
-      &nbsp;<input
-        class="output-rgb"
-        *ngIf="outputRgbCode"
-        [value]="outputRgbCode"
-      />
+      &nbsp;<input class="output-rgb" *ngIf="outputRgb" [value]="outputRgb" />
+      <div *ngIf="outputRgb">
+        <p [style]="outputRgbColor">
+          こんな色だよ　
+          <span class="sample-color" [style]="outputRgbBgColor"></span>
+        </p>
+      </div>
     </div>
   </div>
 </main>
