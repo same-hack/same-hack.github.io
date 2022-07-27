@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-color-code-converter',
   templateUrl: './color-code-converter.component.html',
-  styleUrls: [
-    '../home/home.component.scss',
-    './color-code-converter.component.scss',
-  ],
+  styleUrls: ['../common/common.scss', './color-code-converter.component.scss'],
 })
 export class ColorCodeConverterComponent implements OnInit {
   /**入力されたRGBコード */

@@ -1,1 +1,24 @@
-<p>text-counter works!</p>
+<main>
+  <h1>🦈文字数カウンター</h1>
+  <section>
+    <p>- 使い方 -</p>
+    <p>
+      テキストを入力してカウントボタンをクリックすると、<br />
+      入力した文字数を計算出来ます。 <br />
+      ※改行/スペースも1文字としてカウントします。
+    </p>
+  </section>
+  <div class="">
+    <textarea
+      name=""
+      id=""
+      cols="100"
+      rows="20"
+      [(ngModel)]="inputText"
+    ></textarea>
+  </div>
+
+  <button (click)="counter(inputText)">カウント</button>
+
+  {{ count }}文字だよ！
+</main>

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
-  styleUrls: ['../home/home.component.scss', './converter.component.scss'],
+  styleUrls: ['../common/common.scss', './converter.component.scss'],
 })
 export class ConverterComponent {
   /**2進数 */

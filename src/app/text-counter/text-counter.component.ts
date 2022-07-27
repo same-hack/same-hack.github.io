@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-text-counter',
   templateUrl: './text-counter.component.html',
-  styleUrls: ['./text-counter.component.scss']
+  styleUrls: ['../common/common.scss', './text-counter.component.scss'],
 })
 export class TextCounterComponent implements OnInit {
+  inputText: string = '';
+  count: number = 0;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  counter(text: string) {
+    this.count = text.length;
   }
 
+  constructor() {}
+
+  ngOnInit(): void {}
 }

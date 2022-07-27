@@ -29,17 +29,22 @@ body::after {
   content: "";
 }
 
-h2 {
+h1 {
   margin-bottom: 20px;
   background-color: #e2f3f3;
   border-bottom: 4px solid #86cfcf;
   color: #333;
   padding-left: 0.5em;
 }
+
 section {
   margin-bottom: 20px;
   padding-left: 0.5em;
 }
 section p {
   padding-left: 0.5em;
+}
+
+ul {
+  list-style: none;
 }
