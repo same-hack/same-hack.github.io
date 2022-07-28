@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-converter',
-  templateUrl: './converter.component.html',
-  styleUrls: ['../common/common.scss', './converter.component.scss'],
+  templateUrl: './base-number-converter.component.html',
+  styleUrls: [
+    '../common/common.scss',
+    './base-number-converter.component.scss',
+  ],
 })
-export class ConverterComponent {
+export class BaseNumberConverterComponent {
   /**2進数 */
   binary: string = '0';
   /**10進数 */

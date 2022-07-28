@@ -7,26 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorCodeConverterComponent implements OnInit {
   /**入力されたRGBコード */
-  inputRgb: string = '255, 255, 255';
+  inputRgb: string = '133, 208, 207';
   /**RGBコードから変換した16進数表記 */
   outputHexDecimal: string = '';
   /**サンプルカラー */
   outputHexDecimalColor: string = '';
   /**サンプルカラー */
   outputHexDecimalBgColor: string = '';
+  isShowOutputHexDecimalColor: boolean = true;
 
   /**入力されたRGBコード */
-  inputHexDecimal: string = 'ffffff';
+  inputHexDecimal: string = '85d0cf';
   /**RGBコードから変換した16進数表記 */
   outputRgb: string = '';
   /**サンプルカラー */
   outputRgbColor: string = '';
   /**サンプルカラー */
   outputRgbBgColor: string = '';
+  isShowOutputRgbColor: boolean = true;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.convertRgbToHex(this.inputRgb);
+    this.convertHexToRgb(this.inputHexDecimal);
+  }
 
   /**
    * 指定した桁数に0埋めする関数
@@ -51,9 +56,16 @@ export class ColorCodeConverterComponent implements OnInit {
   convertRgbToHex(colorCode: string): void {
     this.outputHexDecimalColor, (this.outputHexDecimalBgColor = '');
 
-    this.outputHexDecimal = '#';
     // カンマで区切ってリスト化
     const rgbList = colorCode.split(',');
+    if (rgbList.length != 3) {
+      this.outputHexDecimal = 'カンマ区切りで入力してください';
+      this.isShowOutputHexDecimalColor = false;
+      return;
+    }
+    this.isShowOutputHexDecimalColor = true;
+
+    this.outputHexDecimal = '#';
     // 16進数に変換
     rgbList.forEach((rgb) => {
       this.outputHexDecimal += this.zeroPadding(Number(rgb).toString(16), 2);
@@ -61,8 +73,15 @@ export class ColorCodeConverterComponent implements OnInit {
     this.outputHexDecimalColor = `color : ${this.outputHexDecimal}`;
     this.outputHexDecimalBgColor = `background-color:${this.outputHexDecimal}`;
   }
+
   /**rgbコード→16進数の変換 */
   convertHexToRgb(colorCode: string): void {
+    if (colorCode.length != 6) {
+      this.outputRgb = '6文字で入力してください';
+      this.isShowOutputRgbColor = false;
+      return;
+    }
+    this.isShowOutputRgbColor = true;
     this.outputRgb = 'rgb(';
     const hexList = [];
 

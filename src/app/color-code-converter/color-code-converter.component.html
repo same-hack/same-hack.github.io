@@ -10,11 +10,19 @@
       <p>- 使い方 -</p>
       <p>rgb表記のカラーコードをカンマ区切りで入力してください</p>
     </section>
-    <div class="">
-      rgb(<input class="" type="text" [(ngModel)]="inputRgb" />)
-      <button (click)="convertRgbToHex(inputRgb)">- 変換 →</button>
-      &nbsp;<input *ngIf="outputHexDecimal" [value]="outputHexDecimal" />
-      <div *ngIf="outputHexDecimal">
+    <div>
+      rgb(<input
+        class=""
+        type="text"
+        maxlength="13"
+        [(ngModel)]="inputRgb"
+        (ngModelChange)="convertRgbToHex($event)"
+      />) -- 変換 --> &nbsp;<input
+        class="output"
+        *ngIf="outputHexDecimal"
+        [value]="outputHexDecimal"
+      />
+      <div *ngIf="isShowOutputHexDecimalColor">
         <p [style]="outputHexDecimalColor">
           こんな色だよ　
           <span class="sample-color" [style]="outputHexDecimalBgColor"></span>
@@ -33,13 +41,18 @@
       <p>16進数表記のカラーコードを区切りなしで入力してください</p>
     </section>
     <div class="">
-      #<input type="text" [(ngModel)]="inputHexDecimal" /> &nbsp;<button
-        (click)="convertHexToRgb(inputHexDecimal)"
-      >
-        - 変換 →
-      </button>
-      &nbsp;<input class="output-rgb" *ngIf="outputRgb" [value]="outputRgb" />
-      <div *ngIf="outputRgb">
+      #<input
+        type="text"
+        maxlength="6"
+        [(ngModel)]="inputHexDecimal"
+        (ngModelChange)="convertHexToRgb($event)"
+      />
+      &nbsp;-- 変換 --> &nbsp;<input
+        class="output"
+        *ngIf="outputRgb"
+        [value]="outputRgb"
+      />
+      <div *ngIf="isShowOutputRgbColor">
         <p [style]="outputRgbColor">
           こんな色だよ　
           <span class="sample-color" [style]="outputRgbBgColor"></span>

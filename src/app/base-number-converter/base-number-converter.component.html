@@ -1,0 +1,28 @@
+<main>
+  <h1>🦈2進数/10進数/16進数変換ツール</h1>
+  <br />
+  <section>
+    <p>任意の項目に値を入力すると</p>
+    <p>他の進数に変換されるよ！</p>
+  </section>
+
+  <div class="">
+    2 進数：<input
+      [(ngModel)]="binary"
+      (ngModelChange)="convertBinary($event)"
+    />
+  </div>
+  <div class="">
+    10進数：<input
+      type="number"
+      [(ngModel)]="decimal"
+      (ngModelChange)="convertDecimal($event)"
+    />
+  </div>
+  <div class="">
+    16進数：<input
+      [(ngModel)]="hexDecimal"
+      (ngModelChange)="convertHexDecimal($event)"
+    />
+  </div>
+</main>

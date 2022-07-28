@@ -3,8 +3,7 @@
   <section>
     <p>- 使い方 -</p>
     <p>
-      テキストを入力してカウントボタンをクリックすると、<br />
-      入力した文字数を計算出来ます。 <br />
+      テキストを入力すると、自動的に文字数がカウントされるよ！<br />
       ※改行/スペースも1文字としてカウントします。
     </p>
   </section>
@@ -15,10 +14,9 @@
       cols="100"
       rows="20"
       [(ngModel)]="inputText"
+      (ngModelChange)="counter($event)"
     ></textarea>
   </div>
-
-  <button (click)="counter(inputText)">カウント</button>
 
   {{ count }}文字だよ！
 </main>
