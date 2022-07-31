@@ -1,0 +1,24 @@
+<main>
+  <h1>🦈QRコードジェネレーター</h1>
+  <section>
+    <p>
+      - 使い方 -
+      <br />
+      URL等を入力すると、自動的にQRコードが生成されるよ！
+    </p>
+  </section>
+  <div class="">
+    <input
+      type="text"
+      [(ngModel)]="targetUrl"
+      (ngModelChange)="qrcodeGenerate($event)"
+    />
+    <br />
+    <br />
+    <qrcode
+      [qrdata]="qrcode"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+    ></qrcode>
+  </div>
+</main>

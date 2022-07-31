@@ -4,12 +4,16 @@ import { ColorCodeConverterComponent } from './color-code-converter/color-code-c
 import { BaseNumberConverterComponent } from './base-number-converter/base-number-converter.component';
 import { HomeComponent } from './home/home.component';
 import { TextCounterComponent } from './text-counter/text-counter.component';
+import { SqlGeneratorComponent } from './sql-generator/sql-generator.component';
+import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'base-number-converter', component: BaseNumberConverterComponent },
   { path: 'color-code-converter', component: ColorCodeConverterComponent },
   { path: 'text-counter', component: TextCounterComponent },
+  // { path: 'sql-generator', component: SqlGeneratorComponent },
+  { path: 'qrcode-generator', component: QrCodeGeneratorComponent },
 ];
 
 @NgModule({
