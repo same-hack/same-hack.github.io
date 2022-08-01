@@ -8,15 +8,11 @@
     </p>
   </section>
   <div class="">
-    <input
-      type="text"
-      [(ngModel)]="targetUrl"
-      (ngModelChange)="qrcodeGenerate($event)"
-    />
+    <input type="text" [(ngModel)]="inputUrl" />
     <br />
     <br />
     <qrcode
-      [qrdata]="qrcode"
+      [qrdata]="inputUrl"
       [width]="256"
       [errorCorrectionLevel]="'M'"
     ></qrcode>

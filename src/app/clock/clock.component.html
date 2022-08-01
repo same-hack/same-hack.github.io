@@ -1,0 +1,39 @@
+<main>
+  <header>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <a href="http://samehack.com/">🦈サメハックブログ</a>
+      </button>
+      <button mat-menu-item>
+        <a routerLink="/color-code-converter">🦈カラーコード変換ツール</a>
+      </button>
+      <button mat-menu-item>
+        <a routerLink="/base-number-converter"
+          >🦈2進数/10進数/16進数変換ツール</a
+        >
+      </button>
+      <button mat-menu-item>
+        <a routerLink="/text-counter">🦈文字数カウントツール</a>
+      </button>
+      <button mat-menu-item>
+        <a routerLink="/qrcode-generator">🦈QRコードジェネレーター</a>
+      </button>
+      <button mat-menu-item>
+        <a routerLink="/clock">🦈Embark風クロック </a>
+      </button>
+    </mat-menu>
+  </header>
+
+  <div class="container">
+    <div class="clock-wrap">
+      <div class="clock">{{ clock }}</div>
+    </div>
+  </div>
+</main>

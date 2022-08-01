@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { TextCounterComponent } from './text-counter/text-counter.component';
 import { SqlGeneratorComponent } from './sql-generator/sql-generator.component';
 import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+import { ClockComponent } from './clock/clock.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'color-code-converter', component: ColorCodeConverterComponent },
   { path: 'text-counter', component: TextCounterComponent },
   // { path: 'sql-generator', component: SqlGeneratorComponent },
+  { path: 'clock', component: ClockComponent },
   { path: 'qrcode-generator', component: QrCodeGeneratorComponent },
 ];
 

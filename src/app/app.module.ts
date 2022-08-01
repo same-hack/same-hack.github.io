@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     TextCounterComponent,
     SqlGeneratorComponent,
     QrCodeGeneratorComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,
