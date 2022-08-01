@@ -6,12 +6,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clock.component.scss'],
 })
 export class ClockComponent implements OnInit {
-  clock = '';
+  clock: string = '';
+  bgStyle: string = '';
+
+  // myFunc() {
+  updateTime() {
+    //   //現在の日付・時刻を取得
+    let date = new Date();
+    console.log(date);
+
+    // 現在の時刻
+    this.clock =
+      this.zeroPadding(date.getHours(), 2) +
+      ':' +
+      this.zeroPadding(date.getMinutes(), 2);
+  }
+
   constructor() {}
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.updateTime();
-    setInterval(this.updateTime, 1000);
+    // ファイル名
+    const fileName = this.backgroundSetting(18);
+    this.bgStyle = 'background-image: url("../../images/1.jpg")';
+    console.log(this.bgStyle);
+    // this.bgStyle = `background:url("${fileName}") center / cover`;
+
+    setInterval(() => {
+      this.updateTime();
+    }, 1000);
   }
 
   /**
@@ -19,13 +42,11 @@ export class ClockComponent implements OnInit {
    * @param {int} number 画像ファイル数
    * @returns {string} ファイルパス
    */
-  backgroundSetting = (number: number) => {
+  backgroundSetting(number: number) {
     const numberOfImage = Math.floor(Math.random() * number + 1);
-    return `./images/${numberOfImage}.jpg`;
-  };
+    return `../../images/${numberOfImage}.jpg`;
+  }
 
-  // ファイル名
-  // fileName = backgroundSetting(18);
   // 背景画像を差し替える
   // $(".container").css("background", "url(" + fileName + ") center / cover");
 
@@ -45,16 +66,5 @@ export class ClockComponent implements OnInit {
 
     // numの前に指定した数の"0"をつけ、末尾の文字数を削る
     return (zero + num).slice(-zeroLength);
-  }
-
-  updateTime() {
-    //現在の日付・時刻を取得
-    let date = new Date();
-
-    // 現在の時刻
-    this.clock =
-      this.zeroPadding(date.getHours(), 2) +
-      ':' +
-      this.zeroPadding(date.getMinutes(), 2);
   }
 }
