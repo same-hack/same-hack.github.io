@@ -1,0 +1,26 @@
+<main>
+  <h1>🦈坪数/平米数変換ツール</h1>
+  <section>
+    <p>
+      任意の項目に値を入力すると 坪数・平米数に変換されるよ！
+      <br />※少数第三位で四捨五入しています
+    </p>
+  </section>
+
+  <div class="">
+    <input
+      type="number"
+      step="1"
+      [(ngModel)]="tsubo"
+      (ngModelChange)="convertTsuboToSquareMetres($event)"
+    />坪
+    <span> ←→　</span>
+    <input
+      type="number"
+      step="1"
+      [(ngModel)]="squareMetres"
+      (ngModelChange)="convertSquareMetresToTsubo($event)"
+    />
+    平米(㎡)
+  </div>
+</main>

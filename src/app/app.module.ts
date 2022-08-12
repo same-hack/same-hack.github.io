@@ -15,6 +15,7 @@ import { MaterialModule } from './material.module';
 import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ClockComponent } from './clock/clock.component';
+import { HouseSizeConverterComponent } from './house-size-converter/house-size-converter.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ClockComponent } from './clock/clock.component';
     SqlGeneratorComponent,
     QrCodeGeneratorComponent,
     ClockComponent,
+    HouseSizeConverterComponent,
   ],
   imports: [
     BrowserModule,

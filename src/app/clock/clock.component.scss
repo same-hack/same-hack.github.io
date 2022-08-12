@@ -7,7 +7,7 @@ main {
   /* 垂直方向の配置指定 */
   align-items: center;
   justify-content: center;
-  background: url("../../images/1.jpg");
+  background: url("../../images/1.jpg") center/cover;
 }
 
 /* マットを敷く為の疑似要素 */
