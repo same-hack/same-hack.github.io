@@ -16,6 +16,7 @@ import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.
 import { QRCodeModule } from 'angularx-qrcode';
 import { ClockComponent } from './clock/clock.component';
 import { HouseSizeConverterComponent } from './house-size-converter/house-size-converter.component';
+import { MortgageComponent } from './mortgage/mortgage.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HouseSizeConverterComponent } from './house-size-converter/house-size-c
     QrCodeGeneratorComponent,
     ClockComponent,
     HouseSizeConverterComponent,
+    MortgageComponent,
   ],
   imports: [
     BrowserModule,
