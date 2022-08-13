@@ -30,7 +30,6 @@ export class MortgageComponent implements OnInit {
   }
 
   calc() {
-    console.log();
     // 支払回数
     const repaymentsCount = this.year * this.MONTH;
     // パーセント表記を変換
@@ -46,17 +45,12 @@ export class MortgageComponent implements OnInit {
       this.MONEY_UNIT *
       monthlyRate *
       (1 + monthlyRate) ** repaymentsCount;
-    console.log(molecule);
 
     // 分母
     const denominator = (1 + monthlyRate) ** repaymentsCount - 1;
 
-    console.log(denominator);
-
     this.monthlyPayment = Math.round(molecule / denominator);
     this.total = this.monthlyPayment * repaymentsCount;
     this.totalRate = this.total - this.price * this.MONEY_UNIT;
-    console.log(this.monthlyPayment);
-    console.log(this.monthlyPayment * monthlyRate);
   }
 }
