@@ -26,4 +26,13 @@ export class HouseSizeConverterComponent {
     // 少数第3位を四捨五入
     this.tsubo = Math.round(value * this.squareMetresToOneTsubo * 100) / 100;
   }
+
+  update(type: string, value: number) {
+    switch (type) {
+      case 'tsubo':
+        this.tsubo += value;
+        this.convertTsuboToSquareMetres(this.tsubo + value);
+        break;
+    }
+  }
 }

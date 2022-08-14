@@ -12,21 +12,18 @@ export class MortgageComponent implements OnInit {
   MONEY_UNIT = 10000;
   /**金利※年利 */
   yearRate: number = 0.8;
-  // yearRate: number = 0.795;
   /**返済年数 */
   year: number = 35;
   MONTH = 12;
   /**月々の支払金額 */
-  monthlyPayment = 0;
+  monthlyPayment: string = '0';
   /**トータル金額 */
-  total = 0;
+  total: string = '0';
   /**トータル金利 */
-  totalRate = 0;
+  totalRate: string = '0';
 
   public ngOnInit() {
-    // this.monthlyPayment=
     this.calc();
-    // console.log((this.price * 10000 * this.yearRate * (1 + this.yearRate) ** this.year * 35) /(1 + this.yearRate) ** this.year) -1)
   }
 
   calc() {
@@ -36,8 +33,6 @@ export class MortgageComponent implements OnInit {
     const rate = this.yearRate / 100;
     // 月利
     const monthlyRate = rate / this.MONTH;
-
-    console.log(monthlyRate);
 
     // 分子
     const molecule =
@@ -49,8 +44,32 @@ export class MortgageComponent implements OnInit {
     // 分母
     const denominator = (1 + monthlyRate) ** repaymentsCount - 1;
 
-    this.monthlyPayment = Math.round(molecule / denominator);
-    this.total = this.monthlyPayment * repaymentsCount;
-    this.totalRate = this.total - this.price * this.MONEY_UNIT;
+    // 月々の支払い
+    const monthlyPayment = Math.round(molecule / denominator);
+    // トータル金額
+    const total = monthlyPayment * repaymentsCount;
+    // トータル金利
+    const totalRate = total - this.price * this.MONEY_UNIT;
+
+    this.monthlyPayment = monthlyPayment.toLocaleString();
+    this.total = total.toLocaleString();
+    this.totalRate = totalRate.toLocaleString();
+  }
+
+  update(type: string, value: number) {
+    switch (type) {
+      case 'price':
+        this.price += value;
+        break;
+      case 'yearRate':
+        const yR = this.yearRate + value;
+        this.yearRate = Math.round(yR * 100) / 100;
+        break;
+      case 'year':
+        this.year += value;
+        break;
+    }
+
+    this.calc();
   }
 }

@@ -5,8 +5,8 @@
       <!-- 任意の項目に値を入力すると 坪数・平米数に変換されるよ！
       <br />※少数第三位で四捨五入しています -->
     </p>
+    <img src="../../loan.png" alt="" />
     <img src="../../images/住宅ローン計算式.png" alt="" />
-    <div id="kv"></div>
   </section>
   <div class="">
     <div class="">
@@ -16,7 +16,10 @@
         step="100"
         [(ngModel)]="price"
         (ngModelChange)="calc()"
-      />万円
+      />
+      <button (click)="update('price', 100)">+</button>
+      <button (click)="update('price', -100)">-</button>
+      万円
     </div>
     <div class="">
       利率：
@@ -25,7 +28,10 @@
         step="0.1"
         [(ngModel)]="yearRate"
         (ngModelChange)="calc()"
-      />％
+      />
+      <button (click)="update('yearRate', 0.1)">+</button>
+      <button (click)="update('yearRate', -0.1)">-</button>
+      ％
     </div>
     <div class="">
       年数：
@@ -34,7 +40,10 @@
         step="1"
         [(ngModel)]="year"
         (ngModelChange)="calc()"
-      />年
+      />
+      <button (click)="update('year', 1)">+</button>
+      <button (click)="update('year', -1)">-</button>
+      年
     </div>
     <br />
 

@@ -13,7 +13,10 @@
       step="1"
       [(ngModel)]="tsubo"
       (ngModelChange)="convertTsuboToSquareMetres($event)"
-    />坪
+    />
+    <button (click)="update('tsubo', 1)">+</button>
+    <button (click)="update('tsubo', -1)">-</button>
+    坪
     <span> ←→　</span>
     <input
       type="number"
