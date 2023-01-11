@@ -9,6 +9,7 @@ import { QrCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.
 import { ClockComponent } from './clock/clock.component';
 import { HouseSizeConverterComponent } from './house-size-converter/house-size-converter.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
+import { TaxCalculatorComponent } from './tax-calculator/tax-calculator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'text-counter', component: TextCounterComponent },
   // { path: 'sql-generator', component: SqlGeneratorComponent },
   { path: 'clock', component: ClockComponent },
-  { path: 'clock', component: ClockComponent },
+  { path: 'tax-calculator', component: TaxCalculatorComponent },
   { path: 'qrcode-generator', component: QrCodeGeneratorComponent },
   { path: 'house-size-converter', component: HouseSizeConverterComponent },
   { path: 'mortgage', component: MortgageComponent },

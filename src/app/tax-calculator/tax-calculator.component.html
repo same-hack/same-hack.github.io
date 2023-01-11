@@ -1,0 +1,165 @@
+<main>
+  <h1>🦈事業主向け税金計算ツール</h1>
+  <section>
+    <p>来年度の税金が計算できるよ！</p>
+  </section>
+  <table border="1">
+    <tr>
+      <th>種別</th>
+      <th>入力欄</th>
+      <th>備考</th>
+    </tr>
+    <tr>
+      <td>売上</td>
+      <td>
+        <input type="text" [(ngModel)]="income" (ngModelChange)="calc()" />
+        <button (click)="update('income', 100000)">+</button>
+        <button (click)="update('income', -100000)">-</button>
+        円
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>経費</td>
+      <td>
+        <input type="number" [(ngModel)]="expenses" (ngModelChange)="calc()" />
+        <button (click)="update('expenses', 100000)">+</button>
+        <button (click)="update('expenses', -100000)">-</button>
+        円
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>基礎控除</td>
+      <td>
+        <input
+          type="number"
+          [(ngModel)]="deduction.basic"
+          (ngModelChange)="calc()"
+        />
+        <button (click)="update('deductionBasic', 10000)">+</button>
+        <button (click)="update('deductionBasic', -10000)">-</button>
+        円
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>社会保険料控除</td>
+      <td>
+        <input
+          type="number"
+          [(ngModel)]="deduction.insurance"
+          (ngModelChange)="calc()"
+        />
+        <button (click)="update('deductionInsurance', 12)">×12</button>
+        円
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>帳簿</td>
+      <td>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let ledger of deduction.ledgerList"
+            [value]="ledger.money"
+            [checked]="ledger.isChecked"
+            (change)="update('ledger', ledger.money)"
+          >
+            {{ ledger.text }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+      <td>
+        <span>{{ deduction.checkedLedger }}円控除</span>
+      </td>
+    </tr>
+    <tr>
+      <td>事業種別</td>
+      <td>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let bussines of businessType"
+            [value]="bussines.rate"
+            [checked]="bussines.isChecked"
+            (change)="update('businessType', bussines.rate)"
+          >
+            {{ bussines.text }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+      <td>
+        <span>事業税: {{ TAX.businessTypeRate }}%</span>
+      </td>
+    </tr>
+    <tr>
+      <td>ふるさと納税</td>
+      <td>
+        <input
+          type="number"
+          [(ngModel)]="deduction.furusato.donation"
+          (ngModelChange)="calc()"
+        />
+        <button (click)="update('furusato', 10000)">+</button>
+        <button (click)="update('furusato', -10000)">-</button>
+        円
+      </td>
+      <td>
+        所得税還付金: {{ deduction.furusato.incomeRefund.toLocaleString() }}円
+      </td>
+    </tr>
+  </table>
+
+  <div>
+    <br />
+    <h3>課税所得：{{ taxableIncome }}円</h3>
+  </div>
+
+  <table border="1">
+    <tr>
+      <th>税金</th>
+      <th>金額</th>
+      <th>算出方法</th>
+      <th>支払日</th>
+    </tr>
+    <tr>
+      <td>所得税</td>
+      <td>{{ TAX.incomeTax }}</td>
+      <td>
+        課税所得 × {{ TAX.incomeTaxRate }}% - {{ TAX.incomeTaxDeduction }}
+      </td>
+      <td>翌年3月15日</td>
+    </tr>
+    <tr>
+      <td>住民税</td>
+      <td>{{ TAX.residentTax }}</td>
+      <td>
+        課税所得 × {{ TAX.residentTaxRate }}% -
+        {{ deduction.furusato.residentDeduction }} ※一律
+      </td>
+      <td>翌年6/8/10/1月の4分割</td>
+    </tr>
+    <tr>
+      <td>事業税</td>
+      <td>{{ TAX.business }}</td>
+      <td>
+        課税所得 × {{ TAX.businessTypeRate }}% ※課税所得が290万円未満の場合0円
+      </td>
+      <td>翌年8/11月</td>
+    </tr>
+    <!-- <tr>
+      <td>消費税</td>
+      <td>消費税</td>
+      <td>消費税</td>
+      <td>翌年3月31日</td>
+    </tr> -->
+  </table>
+</main>
