@@ -1,31 +1,44 @@
+<!-- SQLジェネレーターのメインコンポーネント -->
 <main>
+  <!-- ページタイトル -->
   <h1>SQLジェネレーター</h1>
 
+  <!-- セクションの説明 -->
   <section>
     <p>SQL文生成ツールだよ！</p>
   </section>
 
+  <!-- 入力フォームとデータ表示エリア -->
   <div class="wrap">
+    <!-- スキーマ名入力フォーム -->
     <div>
       <label>スキーマ名</label>
       <input type="text" [(ngModel)]="schema" />
     </div>
+
+    <!-- テーブル名入力フォーム -->
     <div>
       <label>テーブル名</label>
       <input type="text" [(ngModel)]="table" />
     </div>
+
+    <!-- データ数入力フォーム -->
     <div>
       <label>データ数</label>
       <input type="number" [(ngModel)]="dataCount" />
     </div>
 
+    <!-- カラム編集エリア -->
     <div class="wrap-column">
       <div>
+        <!-- カラム追加・削除ボタン -->
         <button (click)="addColumn()">カラム追加</button>
         <button (click)="dropColumn()">カラム削除</button>
       </div>
 
+      <!-- カラム情報テーブル -->
       <table border="1">
+        <!-- カラム名 -->
         <tr>
           <td>カラム</td>
           <td *ngFor="let data of datas">
@@ -36,12 +49,16 @@
             />
           </td>
         </tr>
+
+        <!-- データ(値) -->
         <tr>
           <td>データ(値)</td>
           <td *ngFor="let data of datas">
             <input type="text" [(ngModel)]="data.value" placeholder="値" />
           </td>
         </tr>
+
+        <!-- インクリメントチェックボックス -->
         <tr>
           <td>インクリメント</td>
           <td *ngFor="let data of datas">
@@ -51,7 +68,9 @@
       </table>
     </div>
 
-    <section class="wrap-code">
+    <!-- SQLコード表示エリア -->
+    <section class="wrap-code" id="code">
+      <!-- SQLコード生成部分 -->
       <ng-container>
         <span> insert into {{ schema }}.{{ table }} ( </span>
         <span *ngFor="let data of datas; let dataIndex = index"
@@ -62,6 +81,7 @@
         <br />
       </ng-container>
 
+      <!-- 値部分 -->
       <p
         class="values"
         *ngFor="let temp of calcCount(dataCount); let dataIndex = index"
@@ -77,4 +97,6 @@
       </p>
     </section>
   </div>
+
+  <button (click)="getCode()">クリップボードにコピー</button>
 </main>
