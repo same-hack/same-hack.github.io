@@ -1,6 +1,36 @@
-.filtering-select-box {
-  width: 200px;
+input {
+  width: 5rem;
+  color: #4c35ff !important;
 }
-.input-filtering-field {
-  width: 100%;
+
+.wrap {
+  * {
+    label {
+      display: inline-block;
+      width: 5rem;
+    }
+  }
+  .wrap-column {
+    margin: 1rem 0;
+    table {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .wrap-code {
+    padding: 1rem;
+    background-color: #353535;
+    font-size: 0.7em;
+    * {
+      color: #c7c7c7;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 0.9rem;
+      &.values {
+        margin-left: 1rem;
+      }
+    }
+  }
 }

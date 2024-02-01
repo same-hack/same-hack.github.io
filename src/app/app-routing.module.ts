@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'qrcode-generator', component: QrCodeGeneratorComponent },
   { path: 'house-size-converter', component: HouseSizeConverterComponent },
   { path: 'mortgage', component: MortgageComponent },
+  { path: 'sql', component: SqlGeneratorComponent },
 ];
 
 @NgModule({

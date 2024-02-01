@@ -5,5 +5,76 @@
     <p>SQL文生成ツールだよ！</p>
   </section>
 
-  やりたいこと：
+  <div class="wrap">
+    <div>
+      <label>スキーマ名</label>
+      <input type="text" [(ngModel)]="schema" />
+    </div>
+    <div>
+      <label>テーブル名</label>
+      <input type="text" [(ngModel)]="table" />
+    </div>
+    <div>
+      <label>データ数</label>
+      <input type="number" [(ngModel)]="dataCount" />
+    </div>
+
+    <div class="wrap-column">
+      <div>
+        <button (click)="addColumn()">カラム追加</button>
+        <button (click)="dropColumn()">カラム削除</button>
+      </div>
+
+      <table border="1">
+        <tr>
+          <td>カラム</td>
+          <td *ngFor="let data of datas">
+            <input
+              type="text"
+              [(ngModel)]="data.column"
+              placeholder="カラム名"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>データ(値)</td>
+          <td *ngFor="let data of datas">
+            <input type="text" [(ngModel)]="data.value" placeholder="値" />
+          </td>
+        </tr>
+        <tr>
+          <td>インクリメント</td>
+          <td *ngFor="let data of datas">
+            <input type="checkbox" [(ngModel)]="data.isIncrement" />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <section class="wrap-code">
+      <ng-container>
+        <span> insert into {{ schema }}.{{ table }} ( </span>
+        <span *ngFor="let data of datas; let dataIndex = index"
+          >{{ data.column }}
+          <span *ngIf="dataIndex !== datas.length - 1">,</span>
+        </span>
+        <span> ) values</span>
+        <br />
+      </ng-container>
+
+      <p
+        class="values"
+        *ngFor="let temp of calcCount(dataCount); let dataIndex = index"
+      >
+        <span>(</span>
+        <span *ngFor="let data of datas; let i = index">
+          <span *ngIf="data.isIncrement">{{ +data.value + dataIndex }}</span>
+          <span *ngIf="!data.isIncrement">{{ data.value }}</span>
+          <span *ngIf="i !== datas.length - 1">, </span>
+        </span>
+        <span *ngIf="dataIndex !== dataCount - 1">), </span>
+        <span *ngIf="dataIndex === dataCount - 1">); </span>
+      </p>
+    </section>
+  </div>
 </main>
