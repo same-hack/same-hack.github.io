@@ -18,6 +18,8 @@ import { ClockComponent } from './clock/clock.component';
 import { HouseSizeConverterComponent } from './house-size-converter/house-size-converter.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { TaxCalculatorComponent } from './tax-calculator/tax-calculator.component';
+import { UpdateComponent } from './sql-generator/update/update.component';
+import { DumpGeneratorComponent } from './dump-generator/dump-generator.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { TaxCalculatorComponent } from './tax-calculator/tax-calculator.componen
     HouseSizeConverterComponent,
     MortgageComponent,
     TaxCalculatorComponent,
+    UpdateComponent,
+    DumpGeneratorComponent,
   ],
   imports: [
     BrowserModule,

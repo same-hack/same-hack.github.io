@@ -1,0 +1,118 @@
+<!-- SQLジェネレーターのメインコンポーネント -->
+<main>
+  <!-- ページタイトル -->
+  <h1>【PostgreSQL】dumpファイルジェネレーター</h1>
+
+  <!-- セクションの説明 -->
+  <section>
+    <p>
+      スキーマ単位でのdumpファイル生成ツールだよ！
+      <br />
+      コマンドプロンプトに入力してね！
+    </p>
+  </section>
+
+  <!-- 入力フォームとデータ表示エリア -->
+  <div class="wrap">
+    <!-- ホスト名入力フォーム -->
+    <div>
+      <label>ホスト名</label>
+      <input type="text" [(ngModel)]="host" />
+    </div>
+
+    <!-- ポート名入力フォーム -->
+    <div>
+      <label>ポート名</label>
+      <input type="text" [(ngModel)]="port" />
+    </div>
+
+    <!-- ユーザ名入力フォーム -->
+    <div>
+      <label>ユーザ名</label>
+      <input type="text" [(ngModel)]="user" />
+    </div>
+
+    <!-- DB名入力フォーム -->
+    <div>
+      <label>DB名</label>
+      <input type="text" [(ngModel)]="db" />
+    </div>
+
+    <!-- スキーマ名入力フォーム -->
+    <div>
+      <label>スキーマ名</label>
+      <input type="text" [(ngModel)]="schema" />
+    </div>
+
+    <!-- 出力ファイル名入力フォーム -->
+    <div>
+      <label>ファイル名</label>
+      <input type="text" [(ngModel)]="nameFile" />
+    </div>
+
+    <br />
+    <!-- SQLコード表示エリア -->
+    <section class="wrap-code" id="code">
+      <!-- SQLコード生成部分 -->
+      <ng-container>
+        <span>
+          pg_dump -h {{ host }} -p {{ port }} -U {{ user }} -d {{ db }} -n
+          {{ schema }} -F c -f {{ nameFile }}.dump
+        </span>
+      </ng-container>
+    </section>
+  </div>
+
+  <button (click)="getCode()">クリップボードにコピー</button>
+  <br />
+  <section class="desc">
+    <div>[ オプションについて ]</div>
+    <div>-h　 : ホスト</div>
+    <div>-p 　: ポート番号※デフォルトは5432</div>
+    <div>-U 　: ユーザー名</div>
+    <div>-d 　: データベース名</div>
+    <div>-n 　: スキーマ名</div>
+    <div>
+      -F c : ダンプ形式の指定。c はカスタム形式を意味します。他にも
+      t（テキスト形式）、d（ディレクトリ形式）などがあります。
+    </div>
+    <div>-f 　: ダンプデータを保存するファイルの指定</div>
+  </section>
+</main>
+
+<!-- SQLジェネレーターのメインコンポーネント -->
+<main>
+  <!-- ページタイトル -->
+  <h1>【PostgreSQL】リストアコマンド</h1>
+
+  <!-- セクションの説明 -->
+  <section>
+    <p>
+      上で作ったdumpファイルのリストアコマンドだよ！
+      <br />
+      ダンプファイルを別の場所に保管した場合は、そのファイルのパスを指定してね！
+      <br />
+      コマンドプロンプトに入力してね！
+    </p>
+  </section>
+
+  <!-- 入力フォームとデータ表示エリア -->
+  <div class="wrap">
+    <!-- SQLコード表示エリア -->
+    <section class="wrap-code" id="code">
+      <!-- SQLコード生成部分 -->
+      <ng-container>
+        <span>
+          pg_restore -h {{ host }} -p {{ port }} -U {{ user }} -d {{ db }} -v
+          {{ nameFile }}.dump
+        </span>
+      </ng-container>
+    </section>
+  </div>
+
+  <button (click)="getCode()">クリップボードにコピー</button>
+  <br />
+  <br />
+  <br />
+  <br />
+</main>

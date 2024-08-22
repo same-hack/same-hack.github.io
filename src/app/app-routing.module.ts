@@ -10,6 +10,7 @@ import { ClockComponent } from './clock/clock.component';
 import { HouseSizeConverterComponent } from './house-size-converter/house-size-converter.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { TaxCalculatorComponent } from './tax-calculator/tax-calculator.component';
+import { DumpGeneratorComponent } from './dump-generator/dump-generator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'house-size-converter', component: HouseSizeConverterComponent },
   { path: 'mortgage', component: MortgageComponent },
   { path: 'sql', component: SqlGeneratorComponent },
+  { path: 'dump-generator', component: DumpGeneratorComponent },
 ];
 
 @NgModule({

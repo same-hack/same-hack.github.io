@@ -1,0 +1,45 @@
+input {
+  color: #4c35ff !important;
+  margin-left: 1em;
+}
+
+.wrap {
+  * {
+    label {
+      display: inline-block;
+      width: 5rem;
+    }
+  }
+  .wrap-column {
+    margin: 1rem 0;
+    table {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .wrap-code {
+    padding: 1rem;
+    background-color: #353535;
+    font-size: 0.7em;
+    * {
+      color: #c7c7c7;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 0.9rem;
+      &.values {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+.desc {
+  margin-top: 1rem;
+  * {
+    font-size: 0.7em;
+    line-height: 1.3em;
+    color: rgb(121, 119, 119);
+  }
+}

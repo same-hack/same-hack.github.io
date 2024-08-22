@@ -1,0 +1,95 @@
+入力フォームとデータ表示エリア
+<div class="wrap">
+  <!-- スキーマ名入力フォーム -->
+  <div>
+    <label>スキーマ名</label>
+    <input type="text" [(ngModel)]="schema" />
+  </div>
+
+  <!-- テーブル名入力フォーム -->
+  <div>
+    <label>テーブル名</label>
+    <input type="text" [(ngModel)]="table" />
+  </div>
+
+  <!-- データ数入力フォーム -->
+  <div>
+    <label>データ数</label>
+    <input type="number" [(ngModel)]="dataCount" />
+  </div>
+
+  <!-- カラム編集エリア -->
+  <div class="wrap-column">
+    <div>
+      <!-- カラム追加・削除ボタン -->
+      <button (click)="addCondition()">条件追加</button>
+      <button (click)="dropCondition()">条件削除</button>
+    </div>
+
+    <!-- カラム情報テーブル -->
+    <table border="1">
+      <!-- カラム名 -->
+      <tr>
+        <td>条件式</td>
+        <td *ngFor="let condition of conditions; let i = index">
+          <input type="text" [(ngModel)]="conditions[i]" placeholder="条件式" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- カラム編集エリア -->
+  <div class="wrap-column">
+    <div>
+      <!-- カラム追加・削除ボタン -->
+      <button (click)="addValue()">条件追加</button>
+      <button (click)="dropValue()">条件削除</button>
+    </div>
+
+    <!-- カラム情報テーブル -->
+    <table border="1">
+      <!-- カラム名 -->
+      <tr>
+        <td>データ</td>
+        <td *ngFor="let SetValue of setValues; let i = index">
+          <input type="text" [(ngModel)]="setValues[i]" placeholder="条件式" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SQLコード表示エリア -->
+  <section class="wrap-code" id="code">
+    <!-- SQLコード生成部分 -->
+    <ng-container>
+      <span> UPDATE {{ schema }}.{{ table }} ( </span>
+      <br />
+    </ng-container>
+
+    <ng-container>
+      <span>SET </span>
+      <span *ngFor="let value of setValues; let dataIndex = index"
+        >{{ value }}
+        <span *ngIf="dataIndex !== setValues.length - 1">, <br /> </span>
+      </span>
+      <br />
+    </ng-container>
+
+    <ng-container>
+      <span>WHERE </span>
+      <span *ngFor="let condition of conditions; let dataIndex = index"
+        >{{ condition }}
+        <span *ngIf="dataIndex !== conditions.length - 1"
+          >, <br />
+          AND
+        </span>
+      </span>
+      <span>
+        ;
+        <br />
+      </span>
+    </ng-container>
+  </section>
+</div>
+
+<button (click)="getCode()">クリップボードにコピー</button>
